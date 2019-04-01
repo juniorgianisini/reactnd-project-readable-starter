@@ -1,14 +1,12 @@
-import { getCategories } from '../utils/api'
-import {receiveCategories} from './categories'
 import {showLoading, hideLoading} from 'react-redux-loading-bar'
+import {handleReceiveCategories} from './categories'
+import {handleReceivePosts} from './posts'
 
-
-export function handleGetInitialData(){
-    return (dispatch) => {
+export function handleReceiveInitialData(){
+    return async (dispatch) => {
         dispatch(showLoading())
-        return getCategories().then(({categories}) => {
-            dispatch(receiveCategories(categories))
-            dispatch(hideLoading())
-        })
+        await dispatch(handleReceiveCategories())
+        await dispatch(handleReceivePosts())
+        dispatch(hideLoading())
     }
 }
