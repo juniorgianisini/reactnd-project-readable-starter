@@ -14,6 +14,17 @@ const defaultData = {
     deleted: false,
     commentCount: 2
   },
+  "96f0y6ziyjabvozdd12312": {
+    id: '96f0y6ziyjabvozdd12312',
+    timestamp: 1467166872634,
+    title: 'My first post',
+    body: 'First Post.',
+    author: 'thingtwo',
+    category: 'react',
+    voteScore: 6,
+    deleted: false,
+    commentCount: 2
+  },
   "6ni6ok3ym7mf1p33lnez": {
     id: '6ni6ok3ym7mf1p33lnez',
     timestamp: 1468479767190,
