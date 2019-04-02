@@ -1,21 +1,13 @@
 import React, { Component, Fragment } from 'react'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
-import LoadingBar from 'react-redux-loading-bar'
 import { connect } from 'react-redux'
-import { withStyles } from '@material-ui/core/styles';
+import LoadingBar from 'react-redux-loading-bar'
 import { handleReceiveInitialData } from '../actions/shared'
-import Grid from '@material-ui/core/Grid';
-import Category from './Category'
-
-const styles = theme => ({
-  grid: {
-      direction: "column",
-      alignItems: "scretch",
-      marginLeft: 20,
-      marginRight: 20
-  }
-});
-
+import ListCategory from './ListCategory';
+import Category from './Category';
+import Nav from './Nav'
+import { withStyles } from '@material-ui/core/styles';
+import styles from '../styles'
 
 class App extends Component {
 
@@ -24,24 +16,20 @@ class App extends Component {
   }
 
   render() {
-    const { categories, classes } = this.props
+    const {classes} = this.props
+
     return (
-      <Fragment>
-        <LoadingBar />
-        <div className="App">
-          <Grid className={classes.grid}>
-            {
-              Object.keys(categories).map(key => <Category key={categories[key].name} category={categories[key].name}/>)
-            }
-          </Grid>
-        </div>
-      </Fragment>
+      <Router>
+        <Fragment>
+          <LoadingBar />
+          <div className="app">
+            <Route path="/" exact component={ListCategory} />
+            <Route path="/category/:id" component={Category} />
+          </div>
+        </Fragment>
+      </Router>
     );
   }
 }
 
-function mapStateToProps({ categories }) {
-  return { categories: categories }
-}
-
-export default withStyles(styles)(connect(mapStateToProps)(App))
+export default withStyles(styles)(connect()(App))
