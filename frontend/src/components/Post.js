@@ -5,11 +5,9 @@ import { withStyles } from '@material-ui/core/styles';
 import styles from '../styles'
 import Paper from '@material-ui/core/Paper';
 import { getPostById } from '../selectors/posts'
-import { Typography } from '@material-ui/core';
-import Button from '@material-ui/core/Button';
-import IconButton from '@material-ui/core/IconButton';
-import DeleteIcon from '@material-ui/icons/Delete';
-import AddIcon from '@material-ui/icons/Add';
+import { Typography, Divider } from '@material-ui/core'
+import ActionBar from './ActionBar'
+import ListComments from './ListComments'
 
 class Post extends Component {
     render() {
@@ -26,12 +24,8 @@ class Post extends Component {
                     <Typography variant="body1">
                         {post.body}
                     </Typography>
-                    <IconButton aria-label="Delete" className={classes.margin}>
-                        <DeleteIcon fontSize="small" color="secondary" />
-                    </IconButton>
-                    <IconButton aria-label="Add" className={classes.margin}>
-                        <AddIcon fontSize="small" />
-                    </IconButton>
+                    <ActionBar/>
+                    <ListComments postId={post.id}/>
                 </Paper>
             </div>
         );

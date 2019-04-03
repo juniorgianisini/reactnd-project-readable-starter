@@ -110,7 +110,7 @@ export const deletePost = (id) =>
  * @param {String} id - Indetificador do Post
  */
 export const getCommentsByPost = (id) =>
-  fetch(`${api}/${id}/comments`, { headers })
+  fetch(`${api}/posts/${id}/comments`, { headers })
     .then(res => res.json())
     .then(data => data)
 

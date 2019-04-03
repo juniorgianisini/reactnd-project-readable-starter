@@ -24,7 +24,7 @@ class App extends Component {
           <LoadingBar />
           <div className="app">
             <Route path="/" exact component={ListCategory} />
-            <Route path="/category/:id" component={Category} />
+            <Route path="/:id" component={Category} />
           </div>
         </Fragment>
       </Router>

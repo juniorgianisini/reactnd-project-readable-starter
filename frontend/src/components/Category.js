@@ -15,14 +15,20 @@ class Category extends Component {
             return null
         } else {
             return (
-                <Grid className={classes.category_grid}>
-                    <Grid item xs={6}>
-                        <Typography variant="overline" color="textSecondary" >
-                            {category.name}
-                        </Typography>
-                        {category.posts.map(id => <Post id={id} />)}
+                <Grid container className={classes.category_root}>
+                    <Grid item xs={12}>
+                        <Grid container className={classes.category_grid} justify="center">
+                            <Grid item xs={8}>
+                                <div>
+                                    <Typography variant="overline" color="primary" >
+                                        {category.name}
+                                    </Typography>
+                                </div>
+                                {category.posts.map(id => <Post id={id} />)}
+                            </Grid>
+                        </Grid>
                     </Grid>
-                </Grid>
+                </Grid >
             );
         }
     }

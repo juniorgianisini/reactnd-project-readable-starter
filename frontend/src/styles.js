@@ -6,11 +6,20 @@ export default (theme) => ({
         margimTop: 10,
         marginBottom: 10
     },
+
+    comment_paper: {
+        padding: theme.spacing.unit * 1,
+        textAlign: "left",
+        color: theme.palette.text.secondary,
+    },
+
+    category_root: {
+        flexGrow: 1
+    },
  
     category_grid: {
-        direction: "column",
-        alignItems: "center",
-        marginLeft: 20,
-        marginRight: 20
+        direction: "column"
+        //marginLeft: 20,
+        //marginRight: 20
     }
 });
