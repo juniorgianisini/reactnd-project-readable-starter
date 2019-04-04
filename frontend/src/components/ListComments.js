@@ -20,11 +20,11 @@ class ListComments extends Component {
             return null
         }else{
             return (
-                <div className="comments">
-                    <Divider/>
+                <div className="comments" style={{marginTop: 10}}>
                     <Typography variant="overline" color="textSecondary">
-                        Comentários
+                        {commentIds.length} comentários
                     </Typography>
+                    <Divider/>
                     {commentIds.map(id => <Comment key={id} id={id} />)}
                 </div>
             );

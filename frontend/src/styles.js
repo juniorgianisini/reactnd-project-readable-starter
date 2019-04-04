@@ -1,6 +1,6 @@
 export default (theme) => ({
     post_paper: {
-        padding: theme.spacing.unit * 2,
+        padding: theme.spacing.unit * 1,
         textAlign: "left",
         color: theme.palette.text.secondary,
         margimTop: 10,
@@ -8,9 +8,13 @@ export default (theme) => ({
     },
 
     comment_paper: {
-        padding: theme.spacing.unit * 1,
+        padding: theme.spacing.unit * 2,
         textAlign: "left",
         color: theme.palette.text.secondary,
+    },
+
+    action_bar: {
+        marginLeft: 'auto',
     },
 
     category_root: {
@@ -19,7 +23,9 @@ export default (theme) => ({
  
     category_grid: {
         direction: "column"
-        //marginLeft: 20,
-        //marginRight: 20
+    },
+
+    main_bar: {
+        justifyContent: 'space-between',
     }
 });

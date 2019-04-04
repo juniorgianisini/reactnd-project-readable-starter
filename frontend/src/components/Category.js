@@ -19,12 +19,9 @@ class Category extends Component {
                     <Grid item xs={12}>
                         <Grid container className={classes.category_grid} justify="center">
                             <Grid item xs={8}>
-                                <div>
-                                    <Typography variant="overline" color="primary" >
-                                        {category.name}
-                                    </Typography>
+                                <div style={{marginLeft: 10, marginTop: 10}}>
+                                    {category.posts.map(id => <Post id={id} />)}
                                 </div>
-                                {category.posts.map(id => <Post id={id} />)}
                             </Grid>
                         </Grid>
                     </Grid>

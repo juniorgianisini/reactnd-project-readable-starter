@@ -21,6 +21,7 @@ class App extends Component {
     return (
       <Router>
         <Fragment>
+          
           <LoadingBar />
           <div className="app">
             <Route path="/" exact component={ListCategory} />
