@@ -5,9 +5,10 @@ import LoadingBar from 'react-redux-loading-bar'
 import { handleReceiveInitialData } from '../actions/shared'
 import ListCategory from './ListCategory';
 import Category from './Category';
-import Nav from './Nav'
 import { withStyles } from '@material-ui/core/styles';
 import styles from '../styles'
+import { Grid } from '@material-ui/core';
+import MainBar from './MainBar';
 
 class App extends Component {
 
@@ -21,12 +22,14 @@ class App extends Component {
     return (
       <Router>
         <Fragment>
-          
           <LoadingBar />
-          <div className="app">
-            <Route path="/" exact component={ListCategory} />
-            <Route path="/:id" component={Category} />
-          </div>
+          <Grid container justify="center">
+              <Grid item xs={10}>
+                <MainBar/>
+                <Route path="/" exact component={ListCategory} />
+                <Route path="/:id" component={Category} />
+              </Grid>
+          </Grid>
         </Fragment>
       </Router>
     );

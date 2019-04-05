@@ -1,16 +1,15 @@
 export default (theme) => ({
-    post_paper: {
-        padding: theme.spacing.unit * 1,
-        textAlign: "left",
-        color: theme.palette.text.secondary,
-        margimTop: 10,
-        marginBottom: 10
+    post_card: {
+        marginTop: 10
     },
 
-    comment_paper: {
-        padding: theme.spacing.unit * 2,
-        textAlign: "left",
-        color: theme.palette.text.secondary,
+    comment_card: {
+        margin: 10
+    },
+    
+    comments: {
+        marginTop: 10, 
+        margin: 10
     },
 
     action_bar: {

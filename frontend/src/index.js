@@ -12,8 +12,8 @@ const store = createStore(reducer, middleware)
 
 ReactDOM.render(
     <Provider store={store}>
-        <ErrorBoundary>
+        
             <App />
-        </ErrorBoundary>
+        
     </Provider>,
     document.getElementById('root'))

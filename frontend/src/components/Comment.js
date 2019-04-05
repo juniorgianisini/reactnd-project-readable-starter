@@ -3,8 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux'
 import { withStyles } from '@material-ui/core/styles';
 import styles from '../styles'
-import Paper from '@material-ui/core/Paper';
-import { Typography, Grid } from '@material-ui/core'
+import { Card, CardHeader, CardActions, CardContent } from '@material-ui/core'
 import ActionBar from './ActionBar'
 import { getCommentById } from '../selectors/comments'
 import { formatDate } from '../utils/helper';
@@ -13,17 +12,16 @@ class Comment extends Component {
     render() {
         const { classes, comment } = this.props
         return (
-            <div>
-                <Paper className={classes.comment_paper} elevation={0}>
-                    <Typography variant="subtitle2" color="textSecondary">
-                        {formatDate(comment.timestamp) + ' - ' + comment.author}
-                    </Typography>
-                    <Typography variant="body1">
-                        {comment.body}
-                    </Typography>
-                    <ActionBar voteScore={comment.voteScore} mode="Comment" id={comment.id} />
-                </Paper>
-            </div>
+            <Card className={classes.comment_card} elevation={0}>
+                <CardHeader
+                    subheader={'Commented by ' + comment.author + ' on ' + formatDate(comment.timestamp)} />
+                <CardContent>
+                    {comment.body}
+                </CardContent>
+                <CardActions>
+                    <ActionBar voteScore={comment.voteScore} mode={'Comment'} id={comment.id} />
+                </CardActions>
+            </Card>
         );
     }
 }
