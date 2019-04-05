@@ -19,7 +19,7 @@ class Comment extends Component {
                     {comment.body}
                 </CardContent>
                 <CardActions>
-                    <ActionBar voteScore={comment.voteScore} mode={'Comment'} id={comment.id} />
+                    <ActionBar voteScore={comment.voteScore} id={comment.id} />
                 </CardActions>
             </Card>
         );

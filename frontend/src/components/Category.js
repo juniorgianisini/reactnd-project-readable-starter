@@ -14,7 +14,7 @@ class Category extends Component {
         } else {
             return (
                 <div>
-                    { category.posts.map(id => <Post id={id} mode="Detail" />) }
+                    { category.posts.map(id => <Post id={id} mode="View" />) }
                 </div>
             );
         }

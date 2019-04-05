@@ -24,12 +24,12 @@ class ActionBar extends Component {
                 <IconButton aria-label="Down Vote Score" className={classes.margin}>
                     <ThumbDownIcon fontSize="small" />
                 </IconButton>
-                {mode === 'PostDetail' &&
+                {mode === 'Detail' &&
                     <IconButton aria-label="Add Comment" className={classes.margin}>
                         <AddCommentIcon fontSize="small" />
                     </IconButton>
                 }
-                {(mode === 'PostDetail' || mode === 'Comment') &&
+                {(!mode || mode === 'Detail') &&
                     <Fragment>
                         <IconButton aria-label="Edit" className={classes.margin}>
                             <EditIcon fontSize="small" />
@@ -45,7 +45,7 @@ class ActionBar extends Component {
 }
 
 ActionBar.propTypes = {
-    mode: PropTypes.oneOf(['PostDetail', 'PostView', 'Comment']).isRequired,
+    mode: PropTypes.oneOf(['Detail', 'View']),
     voteScore: PropTypes.number.isRequired,
     id: PropTypes.string.isRequired
 };

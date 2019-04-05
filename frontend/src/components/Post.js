@@ -21,7 +21,7 @@ class Post extends Component {
                     {post.body}
                 </CardContent>}
                 <CardActions>
-                    <ActionBar voteScore={post.voteScore} mode={mode === 'Detail' ? 'PostDetail' : 'PostView'} id={post.id} />
+                    <ActionBar voteScore={post.voteScore} mode={mode} id={post.id} />
                 </CardActions>
                 {mode === 'Detail' &&
                 <ListComments postId={post.id}/>}
