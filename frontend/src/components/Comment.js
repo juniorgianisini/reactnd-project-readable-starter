@@ -14,12 +14,12 @@ class Comment extends Component {
         return (
             <Card className={classes.comment_card} elevation={0}>
                 <CardHeader
-                    subheader={'Commented by ' + comment.author + ' on ' + formatDate(comment.timestamp)} />
+                    subheader={`Commented by ${comment.author} on ${formatDate(comment.timestamp)}`} />
                 <CardContent>
                     {comment.body}
                 </CardContent>
                 <CardActions>
-                    <ActionBar voteScore={comment.voteScore} id={comment.id} />
+                    <ActionBar voteScore={comment.voteScore} id={comment.id} editMode={true} />
                 </CardActions>
             </Card>
         );

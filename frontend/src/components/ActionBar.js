@@ -5,14 +5,13 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import EditIcon from '@material-ui/icons/Edit';
 import ThumbDownIcon from '@material-ui/icons/ThumbDown';
 import ThumbUpIcon from '@material-ui/icons/ThumbUp';
-import AddCommentIcon from '@material-ui/icons/AddComment';
 import { withStyles } from '@material-ui/core/styles';
 import styles from '../styles'
 import { Toolbar, Typography } from '@material-ui/core'
 
 class ActionBar extends Component {
     render() {
-        const { classes, voteScore, mode } = this.props
+        const { classes, voteScore, editMode } = this.props
         return (
             <Toolbar variant="dense" className={classes.action_bar} disableGutters={true}>
                 <IconButton aria-label="Up Vote Score" className={classes.margin}>
@@ -24,12 +23,7 @@ class ActionBar extends Component {
                 <IconButton aria-label="Down Vote Score" className={classes.margin}>
                     <ThumbDownIcon fontSize="small" />
                 </IconButton>
-                {mode === 'Detail' &&
-                    <IconButton aria-label="Add Comment" className={classes.margin}>
-                        <AddCommentIcon fontSize="small" />
-                    </IconButton>
-                }
-                {(!mode || mode === 'Detail') &&
+                {editMode &&
                     <Fragment>
                         <IconButton aria-label="Edit" className={classes.margin}>
                             <EditIcon fontSize="small" />
@@ -39,15 +33,18 @@ class ActionBar extends Component {
                         </IconButton>
                     </Fragment>
                 }
+                {
+                    this.props.children
+                }
             </Toolbar>
         )
     }
 }
 
 ActionBar.propTypes = {
-    mode: PropTypes.oneOf(['Detail', 'View']),
+    editMode: PropTypes.bool.isRequired,
     voteScore: PropTypes.number.isRequired,
     id: PropTypes.string.isRequired
 };
 
-export default withStyles(styles)(ActionBar);
+export default withStyles(styles)(ActionBar)

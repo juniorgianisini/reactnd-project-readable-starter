@@ -7,36 +7,51 @@ import { getPostById } from '../selectors/posts'
 import { Card, CardHeader, CardContent, CardActions } from '@material-ui/core'
 import ActionBar from './ActionBar'
 import ListComments from './ListComments'
-import { formatDate } from './../utils/helper';
+import { formatDate, capitalizeString } from './../utils/helper';
+import { withRouter } from 'react-router-dom'
+import IconButton from '@material-ui/core/IconButton';
+import AddCommentIcon from '@material-ui/icons/AddComment';
 
 class Post extends Component {
-    
     render() {
-        const { classes, post, mode } = this.props
+        const { classes, post, editMode } = this.props
+        
+        if(!post){
+            return null
+        }
+
         return (
             <Card className={classes.post_card}>
                 <CardHeader title={post.title}
-                    subheader={'Posted by ' + post.author + ' on ' + formatDate(post.timestamp)} />
-                {mode === 'Detail' && <CardContent>
-                    {post.body}
-                </CardContent>}
+                    subheader={`Posted by ${post.author} on ${formatDate(post.timestamp)} in ${capitalizeString(post.category)} category.`} />
+                {editMode && 
+                    <CardContent>
+                        {post.body}
+                    </CardContent>}
                 <CardActions>
-                    <ActionBar voteScore={post.voteScore} mode={mode} id={post.id} />
+                    <ActionBar voteScore={post.voteScore} editMode={editMode} id={post.id}>
+                        {editMode && <IconButton aria-label="Add Comment" className={classes.margin}>
+                                        <AddCommentIcon fontSize="small" />
+                                     </IconButton>}
+                    </ActionBar>
                 </CardActions>
-                {mode === 'Detail' &&
-                <ListComments postId={post.id}/>}
+                {editMode &&
+                    <ListComments postId={post.id} />}
             </Card>
         );
     }
 }
 
 Post.propTypes = {
-    mode: PropTypes.oneOf(['Detail', 'View']).isRequired,
-    id: PropTypes.string.isRequired
+    editMode: PropTypes.bool.isRequired,
+    id: PropTypes.string
 };
 
-function mapStateToProps(state, { id }) {
+function mapStateToProps(state, { id, match }) {
+    if (!id) {
+        id = match.params.id
+    }
     return { post: getPostById(state, id) }
 }
 
-export default withStyles(styles)(connect(mapStateToProps)(Post));
+export default withRouter(withStyles(styles)(connect(mapStateToProps)(Post)))

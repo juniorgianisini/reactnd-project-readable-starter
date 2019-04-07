@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux'
 import { withStyles } from '@material-ui/core/styles';
@@ -17,19 +17,22 @@ class ListComments extends Component {
 
     render() {
         const {commentIds, classes} = this.props
-        if(!commentIds || commentIds.length === 0){
-            return null
-        }else{
-            return (
-                <div className={classes.comments}>
+        return (
+            <div className={classes.comments}>
+                {(!commentIds || commentIds.length === 0) ?
                     <Typography variant="overline" color="textSecondary">
-                        {commentIds.length} comments
+                        No Comments
                     </Typography>
-                    <Divider/>
-                    {commentIds.map(id => <Comment key={id} id={id} />)}
-                </div>
-            );
-        }
+                :   <Fragment>
+                        <Typography variant="overline" color="textSecondary">
+                            {commentIds.length} comments
+                        </Typography>
+                        <Divider/>
+                        {commentIds.map(id => <Comment key={id} id={id} />)}
+                    </Fragment>
+                }
+            </div>
+        );
     }
 }
 

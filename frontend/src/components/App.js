@@ -1,14 +1,13 @@
-import React, { Component, Fragment } from 'react'
-import { BrowserRouter as Router, Route } from 'react-router-dom'
+import React, { Component, Fragment, PureComponent } from 'react'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import { connect } from 'react-redux'
 import LoadingBar from 'react-redux-loading-bar'
 import { handleReceiveInitialData } from '../actions/shared'
-import ListCategory from './ListCategory';
 import Category from './Category';
-import { withStyles } from '@material-ui/core/styles';
-import styles from '../styles'
 import { Grid } from '@material-ui/core';
-import MainBar from './MainBar';
+import Header from './Header';
+import Post from './Post';
+import ListPosts from './ListPosts';
 
 class App extends Component {
 
@@ -17,23 +16,29 @@ class App extends Component {
   }
 
   render() {
-    const {classes} = this.props
-
+    const {loading} = this.props
     return (
       <Router>
         <Fragment>
           <LoadingBar />
-          <Grid container justify="center">
+          {!loading &&
+            <Grid container justify="center">
               <Grid item xs={10}>
-                <MainBar/>
-                <Route path="/" exact component={ListCategory} />
-                <Route path="/:id" component={Category} />
+                <Header />
+                <Route path="/" exact component={ListPosts} />
+                <Route path="/:id" exact component={Category} />
+                <Route path="/:category/:id" render={() => <Post editMode={true} />} />
               </Grid>
-          </Grid>
+            </Grid>
+          }
         </Fragment>
       </Router>
     );
   }
 }
 
-export default withStyles(styles)(connect()(App))
+function mapStateToProps(state) {
+  return { loading: state.categories.length === 0 }
+}
+
+export default connect(mapStateToProps)(App)
