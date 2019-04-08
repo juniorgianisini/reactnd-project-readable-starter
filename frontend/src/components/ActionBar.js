@@ -11,16 +11,16 @@ import { Toolbar, Typography } from '@material-ui/core'
 
 class ActionBar extends Component {
     render() {
-        const { classes, voteScore, editMode } = this.props
+        const { classes, voteScore, editMode, onUpVote, onDownVote } = this.props
         return (
             <Toolbar variant="dense" className={classes.action_bar} disableGutters={true}>
-                <IconButton aria-label="Up Vote Score" className={classes.margin}>
+                <IconButton aria-label="Up Vote Score" className={classes.margin} onClick={onUpVote}>
                     <ThumbUpIcon fontSize="small" />
                 </IconButton>
                 <Typography variant="subtitle2" color="textSecondary">
                     {voteScore}
                 </Typography>
-                <IconButton aria-label="Down Vote Score" className={classes.margin}>
+                <IconButton aria-label="Down Vote Score" className={classes.margin} onClick={onDownVote}>
                     <ThumbDownIcon fontSize="small" />
                 </IconButton>
                 {editMode &&
@@ -44,7 +44,9 @@ class ActionBar extends Component {
 ActionBar.propTypes = {
     editMode: PropTypes.bool.isRequired,
     voteScore: PropTypes.number.isRequired,
-    id: PropTypes.string.isRequired
+    id: PropTypes.string.isRequired,
+    onUpVote: PropTypes.func.isRequired,
+    onDownVote: PropTypes.func.isRequired
 };
 
 export default withStyles(styles)(ActionBar)

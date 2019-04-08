@@ -4,7 +4,7 @@ import { getColumnPostOrderBy } from './view'
 export const getPostById = (state, id) => state.posts[id]
 
 const getPosts = (state, props) => {
-    const {categoryId} = props
+    const {categoryId} = props 
     if(!categoryId || categoryId === ''){
         return Object.keys(state.posts).map(key => state.posts[key])
     }else{

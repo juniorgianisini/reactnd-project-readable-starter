@@ -11,12 +11,26 @@ import { formatDate, capitalizeString } from './../utils/helper';
 import { withRouter } from 'react-router-dom'
 import IconButton from '@material-ui/core/IconButton';
 import AddCommentIcon from '@material-ui/icons/AddComment';
+import { handleChangeVotePost } from '../actions/posts';
 
 class Post extends Component {
+
+    handleUpVote = (e) => {
+        e.preventDefault()
+        const {post, dispatch} = this.props
+        dispatch(handleChangeVotePost(post.id, true))
+    }
+
+    handleDownVote = (e) => {
+        e.preventDefault()
+        const {post, dispatch} = this.props
+        dispatch(handleChangeVotePost(post.id, false))
+    }
+
     render() {
         const { classes, post, editMode } = this.props
-        
-        if(!post){
+
+        if (!post) {
             return null
         }
 
@@ -24,15 +38,19 @@ class Post extends Component {
             <Card className={classes.post_card}>
                 <CardHeader title={post.title}
                     subheader={`Posted by ${post.author} on ${formatDate(post.timestamp)} in ${capitalizeString(post.category)} category.`} />
-                {editMode && 
+                {editMode &&
                     <CardContent>
                         {post.body}
                     </CardContent>}
                 <CardActions>
-                    <ActionBar voteScore={post.voteScore} editMode={editMode} id={post.id}>
+                    <ActionBar voteScore={post.voteScore} 
+                               editMode={editMode} 
+                               id={post.id}
+                               onUpVote={this.handleUpVote}
+                               onDownVote={this.handleDownVote}>
                         {editMode && <IconButton aria-label="Add Comment" className={classes.margin}>
-                                        <AddCommentIcon fontSize="small" />
-                                     </IconButton>}
+                            <AddCommentIcon fontSize="small" />
+                        </IconButton>}
                     </ActionBar>
                 </CardActions>
                 {editMode &&
@@ -44,7 +62,7 @@ class Post extends Component {
 
 Post.propTypes = {
     editMode: PropTypes.bool.isRequired,
-    id: PropTypes.string
+    id: PropTypes.string,
 };
 
 function mapStateToProps(state, { id, match }) {

@@ -1,6 +1,6 @@
 import React, { Component, Fragment, PureComponent } from 'react';
 import { connect } from 'react-redux'
-import { Toolbar, Select, MenuItem, AppBar, Button } from '@material-ui/core';
+import { Toolbar, Select, MenuItem, AppBar, Button, Typography } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 import styles from '../styles'
 import { getAllCategories } from '../selectors/categories';
@@ -10,14 +10,14 @@ import { changePostsOrderBy } from './../actions/posts';
 import { Link } from 'react-router-dom'
 
 class Header extends PureComponent {
-    
+
     handleOnChangeOrderBy = (event) => {
         const value = event.target.value
         this.props.dispatch(changePostsOrderBy(value))
     }
-    
+
     render() {
-        const { categories, classes, columnOrderBy} = this.props
+        const { categories, classes, columnOrderBy } = this.props
         return (
             <Fragment>
                 <AppBar position="static">
@@ -26,11 +26,12 @@ class Header extends PureComponent {
                         {categories.map(categ => (
                             <Button component={Link} key={categ.name} to={`/${categ.path}`} variant="text" color="inherit">{categ.name}</Button>
                         ))}
+
                         <Select
                             variant="standard"
                             value={columnOrderBy}
+                            className={classes.select_header}
                             displayEmpty
-                            className={classes.selectEmpty}
                             onChange={this.handleOnChangeOrderBy}
                         >
                             <MenuItem value="">
@@ -43,15 +44,17 @@ class Header extends PureComponent {
                         </Select>
                     </Toolbar>
                 </AppBar>
-                <PostBreadCrumbs/>
+                <PostBreadCrumbs />
             </Fragment>
         );
     }
 }
 
 function mapStateToProps(state, props) {
-    return { categories: getAllCategories(state),
-             columnOrderBy: getColumnPostOrderBy(state) }
+    return {
+        categories: getAllCategories(state),
+        columnOrderBy: getColumnPostOrderBy(state)
+    }
 }
 
 export default withStyles(styles)(connect(mapStateToProps)(Header))

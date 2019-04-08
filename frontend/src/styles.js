@@ -5,7 +5,7 @@ export default (theme) => ({
 
     posts: {
         marginTop: 10, 
-        margin: 10
+        //margin: 10
     },
 
     comment_card: {
@@ -36,4 +36,17 @@ export default (theme) => ({
     breadcrumbs_paper: {
         padding: `${theme.spacing.unit}px ${theme.spacing.unit * 2}px`,
     },
+
+    select_header: {
+        color: 'inherit'
+    },
+
+    fab_header: {
+        margin: 0,
+        top: 'auto',
+        right: 20,
+        bottom: 20,
+        left: 'auto',
+        position: 'fixed'
+    }
 });

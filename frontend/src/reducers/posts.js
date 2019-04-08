@@ -1,5 +1,6 @@
-import { RECEIVE_POSTS } from '../actions/posts'
+import { RECEIVE_POSTS, CHA } from '../actions/posts'
 import { RECEIVE_COMMENTS_BY_POSTID } from '../actions/comments'
+import { CHANGE_VOTE_POST } from './../actions/posts';
 
 export default function posts(state = {}, action) {
     switch (action.type) {
@@ -18,6 +19,12 @@ export default function posts(state = {}, action) {
             return {
                 ...state,
                 [postId]: {...state[postId], comments: !comments ? [] : comments.map((comment) => comment.id)}
+            }
+        case CHANGE_VOTE_POST:
+            const score = state[action.postId].voteScore
+            return {
+                ...state,
+                [action.postId]: {...state[action.postId], voteScore: action.isUpVote ? score + 1 : score - 1}
             }
         default:
             return state
