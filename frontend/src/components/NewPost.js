@@ -7,8 +7,6 @@ import { connect } from 'react-redux'
 import { getAllCategories } from '../selectors/categories'
 import Fab from '@material-ui/core/Fab';
 import AddIcon from '@material-ui/icons/Add';
-import { Transition } from 'react-transition-group';
-
 
 class NewPost extends Component {
     state = {
