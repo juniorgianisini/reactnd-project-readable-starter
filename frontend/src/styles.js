@@ -5,7 +5,6 @@ export default (theme) => ({
 
     posts: {
         marginTop: 10, 
-        //margin: 10
     },
 
     comment_card: {
@@ -13,7 +12,6 @@ export default (theme) => ({
     },
     
     comments: {
-        marginTop: 10, 
         margin: 10
     },
 
@@ -38,7 +36,8 @@ export default (theme) => ({
     },
 
     select_header: {
-        color: 'inherit'
+        color: 'White',
+        width: 150
     },
 
     fab_header: {
@@ -48,5 +47,9 @@ export default (theme) => ({
         bottom: 20,
         left: 'auto',
         position: 'fixed'
+    },
+
+    post_form_item: {
+        margin: 10
     }
 });

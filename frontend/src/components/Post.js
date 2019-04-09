@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux'
 import { withStyles } from '@material-ui/core/styles';
@@ -12,18 +12,19 @@ import { withRouter } from 'react-router-dom'
 import IconButton from '@material-ui/core/IconButton';
 import AddCommentIcon from '@material-ui/icons/AddComment';
 import { handleChangeVotePost } from '../actions/posts';
+import NewComment from './NewComment';
 
 class Post extends Component {
 
     handleUpVote = (e) => {
         e.preventDefault()
-        const {post, dispatch} = this.props
+        const { post, dispatch } = this.props
         dispatch(handleChangeVotePost(post.id, true))
     }
 
     handleDownVote = (e) => {
         e.preventDefault()
-        const {post, dispatch} = this.props
+        const { post, dispatch } = this.props
         dispatch(handleChangeVotePost(post.id, false))
     }
 
@@ -35,27 +36,27 @@ class Post extends Component {
         }
 
         return (
-            <Card className={classes.post_card}>
-                <CardHeader title={post.title}
-                    subheader={`Posted by ${post.author} on ${formatDate(post.timestamp)} in ${capitalizeString(post.category)} category.`} />
-                {editMode &&
-                    <CardContent>
-                        {post.body}
-                    </CardContent>}
-                <CardActions>
-                    <ActionBar voteScore={post.voteScore} 
-                               editMode={editMode} 
-                               id={post.id}
-                               onUpVote={this.handleUpVote}
-                               onDownVote={this.handleDownVote}>
-                        {editMode && <IconButton aria-label="Add Comment" className={classes.margin}>
-                            <AddCommentIcon fontSize="small" />
-                        </IconButton>}
-                    </ActionBar>
-                </CardActions>
-                {editMode &&
-                    <ListComments postId={post.id} />}
-            </Card>
+            <Fragment>
+                <Card className={classes.post_card}>
+                    <CardHeader title={post.title}
+                        subheader={`Posted by ${post.author} on ${formatDate(post.timestamp)} in ${capitalizeString(post.category)} category.`} />
+                    {editMode &&
+                        <CardContent>
+                            {post.body}
+                        </CardContent>}
+                    <CardActions>
+                        <ActionBar voteScore={post.voteScore}
+                            editMode={editMode}
+                            id={post.id}
+                            onUpVote={this.handleUpVote}
+                            onDownVote={this.handleDownVote}>
+                        </ActionBar>
+                    </CardActions>
+                    {editMode &&
+                        <ListComments postId={post.id} />}
+                </Card>
+                {editMode && <NewComment/>}
+            </Fragment>
         );
     }
 }

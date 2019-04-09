@@ -7,17 +7,14 @@ import { Typography } from '@material-ui/core';
 import { Link, withRouter } from 'react-router-dom'
 import { withStyles } from '@material-ui/core/styles';
 import styles from '../styles'
-import Fab from '@material-ui/core/Fab';
-import AddIcon from '@material-ui/icons/Add';
+import NewPost from './NewPost';
 
 class ListPost extends Component {
     render() {
         const { posts, classes } = this.props
         return (
             <Fragment>
-                <Fab color="secondary" aria-label="Add" size="medium" className={classes.fab_header}>
-                    <AddIcon fontSize='default' />
-                </Fab>
+                <NewPost/>
                 <div className={classes.posts}>
                     {(!posts || posts.length === 0) ?
                         <Typography variant="overline" color="textSecondary">

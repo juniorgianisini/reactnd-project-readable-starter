@@ -1,6 +1,6 @@
 import React, { Component, Fragment, PureComponent } from 'react';
 import { connect } from 'react-redux'
-import { Toolbar, Select, MenuItem, AppBar, Button, Typography } from '@material-ui/core';
+import { Toolbar, Select, MenuItem, AppBar, Button, Typography, FormControl, InputLabel } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 import styles from '../styles'
 import { getAllCategories } from '../selectors/categories';
@@ -26,22 +26,21 @@ class Header extends PureComponent {
                         {categories.map(categ => (
                             <Button component={Link} key={categ.name} to={`/${categ.path}`} variant="text" color="inherit">{categ.name}</Button>
                         ))}
-
-                        <Select
-                            variant="standard"
-                            value={columnOrderBy}
-                            className={classes.select_header}
-                            displayEmpty
-                            onChange={this.handleOnChangeOrderBy}
-                        >
-                            <MenuItem value="">
-                                <em>Order By</em>
-                            </MenuItem>
-                            <MenuItem value="voteScore">Score</MenuItem>
-                            <MenuItem value="timestamp">Creation Date</MenuItem>
-                            <MenuItem value="title">Title</MenuItem>
-                            <MenuItem value="author">Author</MenuItem>
-                        </Select>
+                        <FormControl className={classes.select_header}>
+                            <InputLabel className={classes.select_header}>Order By</InputLabel>
+                            <Select
+                                value={columnOrderBy}
+                                className={classes.select_header}
+                                displayEmpty
+                                onChange={this.handleOnChangeOrderBy}
+                            >
+                                <MenuItem value="">Order By</MenuItem>
+                                <MenuItem value="voteScore">Score</MenuItem>
+                                <MenuItem value="timestamp">Creation Date</MenuItem>
+                                <MenuItem value="title">Title</MenuItem>
+                                <MenuItem value="author">Author</MenuItem>
+                            </Select>
+                        </FormControl>
                     </Toolbar>
                 </AppBar>
                 <PostBreadCrumbs />
