@@ -5,8 +5,6 @@ import { withStyles } from '@material-ui/core/styles'
 import styles from '../styles'
 import { connect } from 'react-redux'
 import { getAllCategories } from '../selectors/categories'
-import Fab from '@material-ui/core/Fab';
-import AddIcon from '@material-ui/icons/Add';
 
 class NewPost extends Component {
     state = {
@@ -17,11 +15,20 @@ class NewPost extends Component {
         open: false
     }
 
+    componentDidMount () {
+        this.props.onRef(this)
+    }
+
+    
+    componentWillMount () {
+        this.props.onRef(undefined)
+    }
+
     onChangeField = (fieldName, event) => {
         this.setState({ [fieldName]: event.target.value })
     }
 
-    handleClickOpen = () => {
+    handleOpenDialog = () => {
         this.setState({ open: true });
     }
 
@@ -43,9 +50,9 @@ class NewPost extends Component {
         const { classes, categories } = this.props
         return (
             <div>
-                <Fab color="secondary" aria-label="Add" size="medium" className={classes.fab_header} onClick={(e) => this.handleClickOpen(e)}>
+                {/* <Fab color="secondary" aria-label="Add" size="medium" className={classes.fab_header} onClick={(e) => this.handleClickOpen(e)}>
                     <AddIcon fontSize='default' />
-                </Fab>
+                </Fab> */}
                 <Dialog
                     open={open}
                     onClose={this.handleClose}
