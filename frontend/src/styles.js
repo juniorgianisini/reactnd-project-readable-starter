@@ -37,7 +37,7 @@ export default (theme) => ({
 
     select_header: {
         color: 'White',
-        width: 150
+        width: 130
     },
 
     fab_header: {

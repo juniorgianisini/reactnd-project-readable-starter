@@ -10,15 +10,19 @@ import styles from "../styles";
 import NewPost from "./NewPost";
 import Fab from "@material-ui/core/Fab";
 import AddIcon from "@material-ui/icons/Add";
+import { Paper } from "@material-ui/core/Paper";
 
 class ListPost extends Component {
   constructor(props) {
     super(props);
+    this.newPost = React.createRef();
   }
 
   handleAddPost = () => {
-    if (this.newPost) {
-      this.newPost.handleOpenDialog();
+    const { category } = this.props;
+
+    if (this.newPost.current) {
+      this.newPost.current.handleOpenDialog(category, undefined, false);
     }
   };
 
@@ -30,27 +34,29 @@ class ListPost extends Component {
           color="secondary"
           aria-label="Add"
           size="medium"
+          title="New Post"
           className={classes.fab_header}
-          onClick={e => this.handleAddPost(e)}>
+          onClick={e => this.handleAddPost(e)}
+        >
           <AddIcon fontSize="default" />
         </Fab>
-        {/* 
-            Não foi possível utilizar o método React.createRef, pode ter sido algum possível bug da versão do React utilizada no projeto.
-            Com React.createRef nenhum método do componente filho é possível ser chamado.
-            Para resolver o problema foi utilizado os métodos do ciclo de vida do componente filho para associar a referência ao componente pai.
-         */}
-        <NewPost onRef={ref => (this.newPost = ref)} />
+        <NewPost innerRef={this.newPost} />
         <div className={classes.posts}>
           {!posts || posts.length === 0 ? (
-            <Typography variant="overline" color="textSecondary">
-              No Posts
+            <Typography
+              variant="overline"
+              color="textSecondary"
+              style={{ marginLeft: 15 }}
+            >
+              No Posts in this category
             </Typography>
           ) : (
             posts.map(post => (
               <Link
                 key={post.id}
                 to={`/${post.category}/${post.id}`}
-                style={{ textDecoration: "none" }}>
+                style={{ textDecoration: "none" }}
+              >
                 <Post id={post.id} editMode={false} />
               </Link>
             ))

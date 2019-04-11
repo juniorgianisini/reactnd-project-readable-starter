@@ -4,7 +4,13 @@ import { connect } from "react-redux";
 import { withStyles } from "@material-ui/core/styles";
 import styles from "../styles";
 import { getPostById } from "../selectors/posts";
-import { Card, CardHeader, CardContent, CardActions } from "@material-ui/core";
+import {
+  Card,
+  CardHeader,
+  CardContent,
+  CardActions,
+  Typography
+} from "@material-ui/core";
 import ActionBar from "./ActionBar";
 import ListComments from "./ListComments";
 import { formatDate, capitalizeString } from "./../utils/helper";
@@ -13,8 +19,20 @@ import { handleChangeVotePost } from "../actions/posts";
 import NewComment from "./NewComment";
 import Fab from "@material-ui/core/Fab";
 import AddIcon from "@material-ui/icons/Add";
+import NewPost from "./NewPost";
+import { handleReceiveComments } from "../actions/comments";
 
 class Post extends Component {
+  constructor(props) {
+    super(props);
+    this.newComment = React.createRef();
+    this.newPost = React.createRef();
+  }
+
+  componentDidMount() {
+    const { id, dispatch } = this.props;
+  }
+
   handleUpVote = e => {
     e.preventDefault();
     const { post, dispatch } = this.props;
@@ -29,7 +47,18 @@ class Post extends Component {
 
   handleAddComment = e => {
     e.preventDefault();
-    this.newComment.handleOpenDialog();
+    this.newComment.current.handleOpenDialog(undefined, false);
+  };
+
+  handleEdit = e => {
+    e.preventDefault();
+    const { post } = this.props;
+    this.newPost.current.handleOpenDialog(undefined, post, true);
+  };
+
+  handleRemove = e => {
+    e.preventDefault();
+    console.log("Remove");
   };
 
   render() {
@@ -46,8 +75,10 @@ class Post extends Component {
             color="secondary"
             aria-label="Add"
             size="medium"
+            title="New Comment"
             className={classes.fab_header}
-            onClick={e => this.handleAddComment(e)}>
+            onClick={e => this.handleAddComment(e)}
+          >
             <AddIcon fontSize="default" />
           </Fab>
         )}
@@ -66,11 +97,21 @@ class Post extends Component {
               id={post.id}
               onUpVote={this.handleUpVote}
               onDownVote={this.handleDownVote}
+              onEdit={this.handleEdit}
+              onRemove={this.handleRemove}
             />
           </CardActions>
-          {editMode && <ListComments postId={post.id} />}
+          <div className={classes.comments}>
+            <Typography variant="overline" color="textSecondary">
+              {post.commentCount > 0
+                ? `${post.commentCount} comments`
+                : "No Comments in this post"}
+            </Typography>
+            {editMode && <ListComments postId={post.id} />}
+          </div>
         </Card>
-        {editMode && <NewComment onRef={ref => (this.newComment = ref)} />}
+        <NewComment innerRef={this.newComment} />
+        <NewPost innerRef={this.newPost} />
       </Fragment>
     );
   }

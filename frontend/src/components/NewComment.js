@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from "react";
+import React, { Component } from "react";
 import PropTypes from "prop-types";
 import {
   TextField,
@@ -18,23 +18,24 @@ class NewComment extends Component {
     body: "",
     author: "",
     category: "",
-    open: false
+    open: false,
+    editMode: false
   };
-
-  componentDidMount () {
-      this.props.onRef(this)
-  }
-  
-  componentWillMount () {
-      this.props.onRef(undefined)
-  }
 
   onChangeField = (fieldName, event) => {
     this.setState({ [fieldName]: event.target.value });
   };
 
-  handleOpenDialog = () => {
-    this.setState({ open: true });
+  handleOpenDialog = (comment, editMode) => {
+    if (!editMode) {
+      comment = {
+        title: "",
+        body: "",
+        author: "",
+        category: ""
+      };
+    }
+    this.setState({ open: true, editMode, ...comment });
   };
 
   handleCancel = e => {
@@ -51,15 +52,18 @@ class NewComment extends Component {
   };
 
   render() {
-    const { body, author, open } = this.state;
+    const { body, author, open, editMode } = this.state;
     const { classes } = this.props;
     return (
       <div>
         <Dialog
           open={open}
           onClose={this.handleClose}
-          aria-labelledby="form-dialog-title">
-          <DialogTitle id="form-dialog-title">New Comment</DialogTitle>
+          aria-labelledby="form-dialog-title"
+        >
+          <DialogTitle id="form-dialog-title">
+            {editMode ? "Edit Comment" : "New Comment"}
+          </DialogTitle>
           <DialogContent>
             <form noValidate autoComplete="off">
               <TextField
@@ -85,7 +89,8 @@ class NewComment extends Component {
               <Button
                 onClick={this.handleCancel}
                 variant="contained"
-                className={classes.post_form_item}>
+                className={classes.post_form_item}
+              >
                 CANCELAR
               </Button>
               <Button
@@ -93,7 +98,8 @@ class NewComment extends Component {
                 type="submit"
                 variant="contained"
                 className={classes.post_form_item}
-                color="primary">
+                color="primary"
+              >
                 SALVAR
               </Button>
             </DialogActions>
@@ -108,4 +114,4 @@ NewComment.propTypes = {
   postId: PropTypes.string.isRequired
 };
 
-export default withStyles(styles)(connect()(NewComment));
+export default connect()(withStyles(styles)(NewComment));
