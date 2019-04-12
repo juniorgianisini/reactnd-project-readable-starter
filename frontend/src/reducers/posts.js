@@ -1,4 +1,8 @@
-import { RECEIVE_COMMENTS_BY_POSTID } from "../actions/comments";
+import {
+    RECEIVE_COMMENTS_BY_POSTID,
+    ADD_COMMENT,
+    REMOVE_COMMENT
+} from "../actions/comments";
 import {
     RECEIVE_POSTS,
     CHANGE_VOTE_POST,
@@ -7,7 +11,7 @@ import {
     REMOVE_POST
 } from "./../actions/posts";
 
-export default function posts(state = {}, action) {
+export default function posts(state = {comments: []}, action) {
     switch (action.type) {
         case RECEIVE_POSTS:
             const posts = action.posts.reduce((map, post) => {
@@ -58,8 +62,28 @@ export default function posts(state = {}, action) {
                     .filter(id => id !== postRemove.id)
                     .reduce((map, id) => {
                         map[id] = { ...state[id] };
-                        return map
+                        return map;
                     }, {})
+            };
+        case ADD_COMMENT:
+            const comment = action.comment;
+            return {
+                ...state,
+                [comment.parentId]: {
+                    ...state[comment.parentId],
+                    comments: state[comment.parentId].comments.concat(comment.id)
+                }
+            };
+        case REMOVE_COMMENT:
+            const commentRemove = action.comment;
+            return {
+                ...state,
+                [commentRemove.parentId]: {
+                    ...state[commentRemove.parentId],
+                    comments: state[commentRemove.parentId].comments.filter(
+                        id => id !== commentRemove.id
+                    )
+                }
             };
         default:
             return state;
