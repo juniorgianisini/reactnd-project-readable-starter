@@ -111,7 +111,7 @@ class NewComment extends Component {
 }
 
 NewComment.propTypes = {
-  postId: PropTypes.string.isRequired
+  postId: PropTypes.string
 };
 
 export default connect()(withStyles(styles)(NewComment));

@@ -10,7 +10,6 @@ import styles from "../styles";
 import NewPost from "./NewPost";
 import Fab from "@material-ui/core/Fab";
 import AddIcon from "@material-ui/icons/Add";
-import { Paper } from "@material-ui/core/Paper";
 
 class ListPost extends Component {
   constructor(props) {
@@ -57,7 +56,7 @@ class ListPost extends Component {
                 to={`/${post.category}/${post.id}`}
                 style={{ textDecoration: "none" }}
               >
-                <Post id={post.id} editMode={false} />
+                <Post key={post.id} id={post.id} editMode={false} />
               </Link>
             ))
           )}

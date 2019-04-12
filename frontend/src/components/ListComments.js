@@ -15,7 +15,7 @@ class ListComments extends Component {
   }
 
   render() {
-    const { commentIds, classes } = this.props;
+    const { commentIds } = this.props;
     return (
       <Fragment>
         {commentIds && commentIds.length > 0 ? (

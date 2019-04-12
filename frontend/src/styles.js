@@ -29,6 +29,11 @@ export default (theme) => ({
 
     main_bar: {
         justifyContent: 'space-between',
+        height: 60
+    },
+
+    main_bar_title: {
+        margin: 10
     },
 
     breadcrumbs_paper: {

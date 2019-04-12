@@ -62,7 +62,7 @@ class Comment extends Component {
             onRemove={this.handleRemove}
           />
         </CardActions>
-        <NewComment innerRef={this.newComment} />
+        <NewComment innerRef={this.newComment}/>
       </Card>
     );
   }

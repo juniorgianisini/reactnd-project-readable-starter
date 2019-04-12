@@ -15,22 +15,17 @@ import ActionBar from "./ActionBar";
 import ListComments from "./ListComments";
 import { formatDate, capitalizeString } from "./../utils/helper";
 import { withRouter } from "react-router-dom";
-import { handleChangeVotePost } from "../actions/posts";
+import { handleChangeVotePost, handleRemovePost } from "../actions/posts";
 import NewComment from "./NewComment";
 import Fab from "@material-ui/core/Fab";
 import AddIcon from "@material-ui/icons/Add";
 import NewPost from "./NewPost";
-import { handleReceiveComments } from "../actions/comments";
 
 class Post extends Component {
   constructor(props) {
     super(props);
     this.newComment = React.createRef();
     this.newPost = React.createRef();
-  }
-
-  componentDidMount() {
-    const { id, dispatch } = this.props;
   }
 
   handleUpVote = e => {
@@ -58,7 +53,9 @@ class Post extends Component {
 
   handleRemove = e => {
     e.preventDefault();
-    console.log("Remove");
+    const { post, dispatch, history } = this.props;
+    dispatch(handleRemovePost(post));
+    history.goBack()
   };
 
   render() {
@@ -110,7 +107,7 @@ class Post extends Component {
             {editMode && <ListComments postId={post.id} />}
           </div>
         </Card>
-        <NewComment innerRef={this.newComment} />
+        <NewComment innerRef={this.newComment} postId={post.id}/>
         <NewPost innerRef={this.newPost} />
       </Fragment>
     );
