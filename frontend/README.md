@@ -1,68 +1,65 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# React Readable
 
-## Available Scripts
+Readable foi construído como trabalho de finalização de curso de React-Redux realizado na Udacity. O aplicativo permite criar postagens e comentários, filtrar por categoria ou texto, ordenar, visualizar em colunas ou lista e votar nas postagens e comentários. Foi construíndo utilizando as tecnologias React na camada de apresentação,Redux no gerenciamento de estado e outras bibliotécas auxiliares como Material-UI, Reselect, Debounce etc.
 
-In the project directory, you can run:
+# Instalação
 
-### `npm start`
+git clone https://github.com/juniorgianisini/reactnd-project-readable-starter.git
+Terminal 1:
+cd reactnd-project-readable-starter/api-server
+npm install
+node server
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Terminal 2:
+cd reactnd-project-readable-starter/frontend
+npm install
+npm start
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+frontend\public
+frontend\public\favicon.ico - Ícone do React
+frontend\public\index.html - Página principal, "não alterar"
+frontend\public\manifest.json - Configurações gerais do App
+frontend\src\actions
+frontend\src\actions\categories.js - Ações que alteram e estado 'categories' no Redux.
+frontend\src\actions\comments.js - Ações que alteram e estado 'comments' no Redux.
+frontend\src\actions\posts.js - Ações que alteram e estado 'posts' no Redux.
+frontend\src\actions\shared.js - Ações que alteram e estado 'shared' no Redux.
+frontend\src\actions\view.js - Ações que alteram e estado 'view' no Redux que guarda estados gerais da aplicação.
+frontend\src\components
+frontend\src\components\ActionBar.js - Componente barra de ações compartilhado nas postagens e comentários.
+frontend\src\components\App.js - Componente principal do Sistema.
+frontend\src\components\AppBreadCrumbs.js - Cmponente que apresenta as páginas acessadas com links de navegação.
+frontend\src\components\AppRoute.js - Componente de rota customizada para diferentes cabeçalhos.
+frontend\src\components\Category.js - Componente de categoria, acessado pela url '/:category'.
+frontend\src\components\Comment.js - Componente para exibição do comentário de uma postagem.
+frontend\src\components\ErrorBoundary.js - Componente que centraliza a captura de erros. Está instável, alguns erros não são propagados. Código está comentado!
+frontend\src\components\Header.js - Cabeçalho da aplicação compartilhado por todas as telas.
+frontend\src\components\ListComments.js - Componente lista de "Comment".
+frontend\src\components\ListPosts.js - Componente lista de "Post", acessado pela url root "/"
+frontend\src\components\NewComment.js - Componente formulário para criação e edição de comentário.
+frontend\src\components\NewPost.js - Componente formulário para criação e edição de postagens.
+frontend\src\components\PageNotFound.js - Página para exibição do erro 404 Not Found.
+frontend\src\components\Post.js - Componente que apresenta as informações de uma postagem.
+frontend\src\components\PostDetails.js - Apresenta os detalhes de uma postagem, wrapper de Post.
+frontend\src\middleware
+frontend\src\middleware\index.js - Centraliza o import de todos os middlware`s
+frontend\src\middleware\logger.js - Middlware que escreve no console do Browser as ações e alterações no estado do Redux.
+frontend\src\reducers
+frontend\src\reducers\categories.js - 
+frontend\src\reducers\comments.js
+frontend\src\reducers\index.js
+frontend\src\reducers\posts.js
+frontend\src\reducers\view.js
+frontend\src\selectors
+frontend\src\selectors\categories.js
+frontend\src\selectors\comments.js
+frontend\src\selectors\posts.js
+frontend\src\selectors\view.js
+frontend\src\utils
+frontend\src\utils\api.js
+frontend\src\utils\helper.js
+frontend\src\index.css
+frontend\src\index.js
+frontend\src\styles.js
+frontend\src\theme.js
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
