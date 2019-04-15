@@ -1,11 +1,4 @@
-.app {
-  margin-left: 10px;
-  margin-right: 10px;
-  align-content: center;
-}
-
 body {
-  margin-left: 10px;
-  margin-right: 10px;
-  vertical-align: middle;
+  margin: 0;
+  background-color: rgb(245, 241, 241)
 }

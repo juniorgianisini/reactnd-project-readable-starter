@@ -1,4 +1,3 @@
-import UUID from 'uuid'
 import {
     getCommentsByPost,
     setVoteComment,
@@ -6,6 +5,7 @@ import {
     updateComment,
     deleteComment
 } from "../utils/api";
+import { generateUUID } from './../utils/helper';
 
 export const RECEIVE_COMMENTS_BY_POSTID = "RECEIVE_COMMENTS_BY_POSTID";
 export const CHANGE_VOTE_COMMENT = "CHANGE_VOTE_COMMENT";
@@ -92,7 +92,7 @@ export function handleRemoveComment(comment) {
 
 export function createCommentObject(comment, parentId) {
     return {
-        id: comment.id || UUID(),
+        id: comment.id || generateUUID(),
         timestamp: comment.timestamp || new Date(),
         voteScore: comment.voteScore || 0,
         body: comment.body,

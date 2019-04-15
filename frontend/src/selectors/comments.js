@@ -1,3 +1,3 @@
-export const getCommentById = (state, id) => state.comments[id]
+export const getCommentById = (state, id) => state.comments[id];
 
-export const getCommentIds = (state, postId) => state.posts[postId].comments
+export const getCommentIds = (state, postId) => state.posts[postId].comments;

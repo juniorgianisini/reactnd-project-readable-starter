@@ -1,4 +1,7 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
+import { Typography } from '@material-ui/core';
+import { Button } from '@material-ui/core';
+import { Link } from 'react-router-dom';
 
 class ErrorBoundary extends Component {
     constructor(props) {
@@ -7,29 +10,32 @@ class ErrorBoundary extends Component {
     }
 
     componentDidCatch(error, errorInfo) {
-        // Catch errors in any components below and re-render with error message
         this.setState({
             error: error,
             errorInfo: errorInfo
-        })
-        // You can also log error messages to an error reporting service here
+        });
     }
 
     render() {
         if (this.state.errorInfo) {
-            // Error path
             return (
-                <div>
-                    <h2>Something went wrong.</h2>
-                    <details style={{ whiteSpace: 'pre-wrap' }}>
-                        {this.state.error && this.state.error.toString()}
-                        <br />
-                        {this.state.errorInfo.componentStack}
-                    </details>
-                </div>
+                    <div style={{ margin: 10 }}>
+                        <Typography variant="h6" color="secondary">
+                            Something went wrong.
+                        </Typography>
+
+                        <Button variant="contained" component={Link} to="/">
+                            Home Page
+                        </Button>
+                        
+                        <details style={{ whiteSpace: "pre-wrap" }}>
+                            {this.state.error && this.state.error.toString()}
+                            <br />
+                            {this.state.errorInfo.componentStack}
+                        </details>
+                    </div>
             );
         }
-        // Normally, just render children
         return this.props.children;
     }
 }

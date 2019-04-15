@@ -11,7 +11,7 @@ import {
     REMOVE_POST
 } from "./../actions/posts";
 
-export default function posts(state = {comments: []}, action) {
+export default function posts(state = {}, action) {
     switch (action.type) {
         case RECEIVE_POSTS:
             const posts = action.posts.reduce((map, post) => {
@@ -71,7 +71,9 @@ export default function posts(state = {comments: []}, action) {
                 ...state,
                 [comment.parentId]: {
                     ...state[comment.parentId],
-                    comments: state[comment.parentId].comments.concat(comment.id)
+                    comments: state[comment.parentId].comments.concat(
+                        comment.id
+                    )
                 }
             };
         case REMOVE_COMMENT:

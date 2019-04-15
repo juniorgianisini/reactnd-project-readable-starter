@@ -47,7 +47,7 @@ class Comment extends Component {
     render() {
         const { classes, comment } = this.props;
         return (
-            <Card className={classes.comment_card} elevation={0}>
+            <Card className={classes.comment} elevation={0}>
                 <CardHeader
                     avatar={<CommentIcon color="secondary" />}
                     subheader={`Commented by ${comment.author} on ${formatDate(
@@ -66,7 +66,10 @@ class Comment extends Component {
                         onRemove={this.handleRemove}
                     />
                 </CardActions>
-                <NewComment innerRef={this.newComment} postId={comment.parentId}/>
+                <NewComment
+                    innerRef={this.newComment}
+                    postId={comment.parentId}
+                />
             </Card>
         );
     }

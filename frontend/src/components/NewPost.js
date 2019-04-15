@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import {
-    TextField,
     FormControl,
     InputLabel,
     Select,
@@ -50,8 +49,7 @@ class NewPost extends Component {
     };
 
     handleCancel = e => {
-        if(e)
-          e.preventDefault();
+        if (e) e.preventDefault();
         this.setState({ open: false });
     };
 
@@ -95,8 +93,8 @@ class NewPost extends Component {
                                 required
                                 fullWidth
                                 className={classes.post_form_item}
-                                validators={['required']}
-                                errorMessages={['Title is required']}
+                                validators={["required"]}
+                                errorMessages={["Title is required"]}
                             />
                             <TextValidator
                                 id="post_body"
@@ -108,8 +106,8 @@ class NewPost extends Component {
                                 required
                                 fullWidth
                                 className={classes.post_form_item}
-                                validators={['required']}
-                                errorMessages={['Text is required']}
+                                validators={["required"]}
+                                errorMessages={["Text is required"]}
                             />
                             <TextValidator
                                 id="post_author"
@@ -121,9 +119,10 @@ class NewPost extends Component {
                                 required
                                 fullWidth
                                 className={classes.post_form_item}
-                                validators={['required']}
-                                errorMessages={['Author is required']}
+                                validators={["required"]}
+                                errorMessages={["Author is required"]}
                             />
+
                             <FormControl
                                 fullWidth
                                 required
