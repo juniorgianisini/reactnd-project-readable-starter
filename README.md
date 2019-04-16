@@ -88,10 +88,6 @@ npm start
 
 # Screenshots
 
-Home|Drawer Menu|Column View|New Post|Post Details
------|------------|------
-<img src="https://raw.githubusercontent.com/juniorgianisini/reactnd-project-readable-starter/master/images/Image1.png" width="250px">|
-<img src="https://raw.githubusercontent.com/juniorgianisini/reactnd-project-readable-starter/master/images/Image2.png" width="250px">|
-<img src="https://raw.githubusercontent.com/juniorgianisini/reactnd-project-readable-starter/master/images/Image3.png" width="250px">|
-<img src="https://raw.githubusercontent.com/juniorgianisini/reactnd-project-readable-starter/master/images/Image4.png" width="250px">|
-<img src="https://raw.githubusercontent.com/juniorgianisini/reactnd-project-readable-starter/master/images/Image5.png" width="250px">
+Home |Drawer Menu |Column View|New Post|Post Details
+-----|------------|-----------|--------|------------|
+<img src="https://raw.githubusercontent.com/juniorgianisini/reactnd-project-readable-starter/master/images/Image1.png" width="250px">|<img src="https://raw.githubusercontent.com/juniorgianisini/reactnd-project-readable-starter/master/images/Image2.png" width="250px">|<img src="https://raw.githubusercontent.com/juniorgianisini/reactnd-project-readable-starter/master/images/Image3.png" width="250px">|<img src="https://raw.githubusercontent.com/juniorgianisini/reactnd-project-readable-starter/master/images/Image4.png" width="250px">|<img src="https://raw.githubusercontent.com/juniorgianisini/reactnd-project-readable-starter/master/images/Image5.png" width="250px">
