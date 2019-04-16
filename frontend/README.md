@@ -1,11 +1,20 @@
 # React Readable
 
-Readable foi construído como trabalho de finalização de curso de React-Redux realizado na Udacity. O aplicativo permite criar postagens e comentários, filtrar por categoria ou texto, ordenar, visualizar em colunas ou lista e votar nas postagens e comentários. Foi construíndo utilizando as tecnologias React na camada de apresentação,Redux no gerenciamento de estado e outras bibliotécas auxiliares como Material-UI, Reselect, Debounce etc.
+O projeto Readable foi construído para o trabalho de finalização do curso de 'React Redux' realizado na Udacity. Este aplicativo permite criar postagens categorizadas e realizar comentários. 
+
+* Para melhorar a usabilidade, vários recursos auxiliares foram adicionados como:
+   * Listar as postagens de uma categoria através de um menu Drawer;
+   * Filtrar as postagens por título ou texto;
+   * Votar nas postagens e comentários;
+   * Alternar o modo de visualização entre colunas ou linhas;
+   * Ordenar as postagens por título, autor, pontuação etc.
+
+No desenvolvimento foram utilizadas as tecnologias React, Material-UI, Redux, Redux-thunk, Reselect, Debounce, Redux-thunk etc.
 
 # Instalação
 
 ```bash
-git clone https://github.com/juniorgianisini/reactnd-project-readable-starter.git
+git clone https://github.com/juniorgianisini/react-readable.git
 ```
 
 Terminal 1:
@@ -22,6 +31,8 @@ npm install
 npm start
 Terminal 2:
 ```
+
+# Resources
 
 ```bash
 ├── public
@@ -42,7 +53,7 @@ Terminal 2:
     │   ├── AppRoute.js - Componente de rota customizada para diferentes cabeçalhos.
     │   ├── Category.js - Componente de categoria, acessado pela url '/:category'.
     │   ├── Comment.js - Componente para exibição do comentário de uma postagem.
-    │   └── ErrorBoundary.js - Componente que centraliza a captura de erros. Está instável, alguns erros não são propagados. Código está comentado!
+    │   └── ErrorBoundary.js - Componente que centraliza a captura de erros. Está instável pois alguns erros não são propagados. Código está comentado e será revisado futuramente.
     │   ├── Header.js - Cabeçalho da aplicação compartilhado por todas as telas.
     │   ├── ListComments.js - Componente lista de "Comment".
     │   ├── ListPosts.js - Componente lista de "Post", acessado pela url root "/"
@@ -55,21 +66,21 @@ Terminal 2:
     │   ├── index.js - Centraliza o import de todos os middlwares
     │   └── logger.js - Middlware que escreve no console do Browser as ações e alterações no estado do Redux.
     ├── reducers
-    │   ├── categories.js - 
-    │   ├── comments.js
-    │   ├── index.js
-    │   ├── posts.js
-    │   └── view.js
+    │   ├── categories.js - Aplica alterações do estado 'categories' na store do Redux.
+    │   ├── comments.js - Aplica alterações do estado 'comments' na store do Redux.
+    │   ├── index.js - Centraliza todos os imports dos reducers.
+    │   ├── posts.js - Aplica alterações do estado 'posts' na store do Redux.
+    │   └── view.js - Aplica alterações do estado 'view' na store do Redux.
     ├── selectors
-    │   ├── categories.js
-    │   ├── comments.js
-    │   ├── posts.js
-    │   └── view.js
+    │   ├── categories.js - Centraliza o acesso ao estado 'categories' do Redux.
+    │   ├── comments.js - Centraliza o acesso ao estado 'comments' do Redux.
+    │   ├── posts.js - Centraliza o acesso ao estado 'posts' do Redux.
+    │   └── view.js -  Centraliza o acesso ao estado 'view' do Redux.
     ├── utils
-    │   ├── api.js
-    │   └── helper.js
-    ├── index.css
-    ├── index.js
-    ├── styles.js
-    ├── theme.js
+    │   ├── api.js - Funções para acesso remoto ao serviços rest do aplicativo api-server disponível em "http://localhost:3001"
+    │   └── helper.js - Funções utilitárias
+    ├── index.css - Global Styles
+    ├── index.js - Script inicial do sistema que carrega a estrutura do React/Redux
+    ├── styles.js - Componet styles, utilizado para customizar estilos dos componentes do Material-UI
+    └── theme.js - Theme styles, utilizado para customizar o tema global do Material-UI. Não foi feita nenhuma customização, mas foi mantido para efeito de documentação e melhorias futuras.
 ```
