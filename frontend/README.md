@@ -15,6 +15,7 @@ cd reactnd-project-readable-starter/frontend
 npm install
 npm start
 
+```bash
 ├── public
 │   ├── favicon.ico - Ícone do React
 │   ├── index.html - Página principal, "não alterar"
@@ -63,3 +64,4 @@ npm start
     ├── index.js
     ├── styles.js
     ├── theme.js
+```
