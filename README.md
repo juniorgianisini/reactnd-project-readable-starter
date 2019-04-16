@@ -14,7 +14,7 @@ No desenvolvimento foram utilizadas as tecnologias React, Material-UI, Redux, Re
 # Instalação
 
 ```bash
-git clone https://github.com/juniorgianisini/react-readable.git
+git clone https://github.com/juniorgianisini/reactnd-project-readable-starter.git
 ```
 
 ## Terminal 1:
