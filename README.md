@@ -9,7 +9,7 @@ O projeto Readable foi construído para o trabalho de finalização do curso de 
    * Alternar o modo de visualização entre colunas ou linhas;
    * Ordenar as postagens por título, autor, pontuação etc.
 
-No desenvolvimento foram utilizadas as tecnologias React, Material-UI, Redux, Redux-thunk, Reselect, Debounce, Redux-thunk etc.
+No desenvolvimento foram utilizadas as tecnologias React, Material-UI, Redux, Redux-thunk, Reselect, Debounce etc.
 
 # Instalação
 
