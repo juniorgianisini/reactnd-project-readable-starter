@@ -2,7 +2,7 @@
 
 O projeto Readable foi construído para o trabalho de finalização do curso de 'React Redux' realizado na Udacity. Este aplicativo permite criar postagens categorizadas e realizar comentários. 
 
-* Para melhorar a usabilidade, vários recursos auxiliares foram adicionados como:
+* Para melhorar a usabilidade vários recursos auxiliares foram adicionados como:
    * Listar as postagens de uma categoria através de um menu Drawer;
    * Filtrar as postagens por título ou texto;
    * Votar nas postagens e comentários;
@@ -21,7 +21,7 @@ git clone https://github.com/juniorgianisini/react-readable.git
 ```bash
 cd reactnd-project-readable-starter/api-server
 npm install
-node server
+nom start
 ```
 
 ## Terminal 2:
@@ -90,8 +90,8 @@ npm start
 
 Home|Drawer Menu|Column View|New Post|Post Details
 -----|------------|------
-<img src="https://raw.githubusercontent.com/juniorgianisini/react-readable/master/images/Image1.png" width="250px">|
-<img src="https://raw.githubusercontent.com/juniorgianisini/react-readable/master/images/Image2.png" width="250px">|
-<img src="https://raw.githubusercontent.com/juniorgianisini/react-readable/master/images/Image3.png" width="250px">|
-<img src="https://raw.githubusercontent.com/juniorgianisini/react-readable/master/images/Image4.png" width="250px">|
-<img src="https://raw.githubusercontent.com/juniorgianisini/react-readable/master/images/Image5.png" width="250px">
+<img src="https://raw.githubusercontent.com/juniorgianisini/reactnd-project-readable-starter/master/images/Image1.png" width="250px">|
+<img src="https://raw.githubusercontent.com/juniorgianisini/reactnd-project-readable-starter/master/images/Image2.png" width="250px">|
+<img src="https://raw.githubusercontent.com/juniorgianisini/reactnd-project-readable-starter/master/images/Image3.png" width="250px">|
+<img src="https://raw.githubusercontent.com/juniorgianisini/reactnd-project-readable-starter/master/images/Image4.png" width="250px">|
+<img src="https://raw.githubusercontent.com/juniorgianisini/reactnd-project-readable-starter/master/images/Image5.png" width="250px">
