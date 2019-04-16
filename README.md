@@ -36,35 +36,35 @@ npm start
 ```bash
 ├── api-server - Projeto NodeJs com serviços rest básicos para manter postagens e comentários. Este projeto foi disponibilizado pela Udacity para desenvolvimento do frontend.
 ├── frontend - Projeto React que acessa os serviços disponíveis em api-server.
-│   └── public
+    └── public
     │   ├── favicon.ico - Ícone do Sistema
     │   ├── index.html - Página principal, "não alterar"
     │   └── manifest.json - Configurações gerais do App
     └── src
         ├── actions
-        │   ├── categories.js - Ações que alteram e estado 'categories' no Redux.
-        │   ├── comments.js - Ações que alteram e estado 'comments' no Redux.
-        │   ├── posts.js - Ações que alteram e estado 'posts' no Redux.
-        │   ├── shared.js - Ações que alteram e estado 'shared' no Redux.
-        │   └── view.js - Ações que alteram e estado 'view' no Redux que guarda estados gerais da aplicação.
+        │   ├── categories.js - Ações para manter o estado 'categories' no Redux.
+        │   ├── comments.js - Ações para manter o estado 'comments' no Redux.
+        │   ├── posts.js - Ações para manter o estado 'posts' no Redux.
+        │   ├── shared.js - Ações para manter o estado 'shared' no Redux.
+        │   └── view.js - Ações para manter o estado 'view' no Redux que guarda estados gerais da aplicação.
         ├── components
         │   ├── ActionBar.js - Componente barra de ações compartilhado nas postagens e comentários.
         │   ├── App.js - Componente principal do Sistema.
-        │   ├── AppBreadCrumbs.js - Cmponente que apresenta as páginas acessadas com links de navegação.
+        │   ├── AppBreadCrumbs.js - Componente que apresenta as páginas acessadas com links de navegação.
         │   ├── AppRoute.js - Componente de rota customizada para diferentes cabeçalhos.
-        │   ├── Category.js - Componente de categoria, acessado pela url '/:category'.
+        │   ├── Category.js - Componente de categoria acessado pela url '/:category'.
         │   ├── Comment.js - Componente para exibição do comentário de uma postagem.
         │   └── ErrorBoundary.js - Componente que centraliza a captura de erros. Está instável pois alguns erros não são propagados. Código está comentado e será revisado futuramente.
         │   ├── Header.js - Cabeçalho da aplicação compartilhado por todas as telas.
         │   ├── ListComments.js - Componente lista de "Comment".
         │   ├── ListPosts.js - Componente lista de "Post", acessado pela url root "/"
-        │   ├── NewComment.js - Componente formulário para criação e edição de comentário.
+        │   ├── NewComment.js - Componente formulário para criação e edição de comentários.
         │   ├── NewPost.js - Componente formulário para criação e edição de postagens.
         │   ├── PageNotFound.js - Página para exibição do erro 404 Not Found.
-        │   ├── Post.js - Componente que apresenta as informações de uma postagem.
-        │   └── PostDetails.js - Apresenta os detalhes de uma postagem, wrapper de Post.
+        │   ├── Post.js - Componente que apresenta as informações de uma postagem em modo visualização ou edição.
+        │   └── PostDetails.js - Apresenta os detalhes de uma postagem, wrapper de Post acessado pela url ":category/:post_id".
         ├── middleware
-        │   ├── index.js - Centraliza o import de todos os middlwares
+        │   ├── index.js - Centraliza o import de todos os middlware`s.
         │   └── logger.js - Middlware que escreve no console do Browser as ações e alterações no estado do Redux.
         ├── reducers
         │   ├── categories.js - Aplica alterações do estado 'categories' na store do Redux.
@@ -78,11 +78,11 @@ npm start
         │   ├── posts.js - Centraliza o acesso ao estado 'posts' do Redux.
         │   └── view.js -  Centraliza o acesso ao estado 'view' do Redux.
         ├── utils
-        │   ├── api.js - Funções para acesso remoto ao serviços rest do aplicativo api-server disponível em "http://localhost:3001"
-        │   └── helper.js - Funções utilitárias
-        ├── index.css - Global Styles
-        ├── index.js - Script inicial do sistema que carrega a estrutura do React/Redux
-        ├── styles.js - Componet styles, utilizado para customizar estilos dos componentes do Material-UI
+        │   ├── api.js - Funções para acesso remoto ao serviços rest do aplicativo api-server disponível em "http://localhost:3001".
+        │   └── helper.js - Funções utilitárias.
+        ├── index.css - Global Styles.
+        ├── index.js - Script inicial do sistema que carrega a estrutura do React/Redux.
+        ├── styles.js - Component styles, utilizado para customizar estilos dos componentes do Material-UI.
         └── theme.js - Theme styles, utilizado para customizar o tema global do Material-UI. Não foi feita nenhuma customização, mas foi mantido para efeito de documentação e melhorias futuras.
 ```
 
