@@ -21,7 +21,7 @@ git clone https://github.com/juniorgianisini/react-readable.git
 ```bash
 cd reactnd-project-readable-starter/api-server
 npm install
-nom start
+npm start
 ```
 
 ## Terminal 2:
