@@ -4,16 +4,24 @@ Readable foi construído como trabalho de finalização de curso de React-Redux 
 
 # Instalação
 
+```bash
 git clone https://github.com/juniorgianisini/reactnd-project-readable-starter.git
+```
+
 Terminal 1:
+```bash
 cd reactnd-project-readable-starter/api-server
 npm install
 node server
+```
 
 Terminal 2:
+```bash
 cd reactnd-project-readable-starter/frontend
 npm install
 npm start
+Terminal 2:
+```
 
 ```bash
 ├── public
