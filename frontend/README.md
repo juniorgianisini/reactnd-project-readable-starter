@@ -17,19 +17,18 @@ No desenvolvimento foram utilizadas as tecnologias React, Material-UI, Redux, Re
 git clone https://github.com/juniorgianisini/react-readable.git
 ```
 
-Terminal 1:
+## Terminal 1:
 ```bash
 cd reactnd-project-readable-starter/api-server
 npm install
 node server
 ```
 
-Terminal 2:
+## Terminal 2:
 ```bash
 cd reactnd-project-readable-starter/frontend
 npm install
 npm start
-Terminal 2:
 ```
 
 # Resources
@@ -84,3 +83,13 @@ Terminal 2:
     ├── styles.js - Componet styles, utilizado para customizar estilos dos componentes do Material-UI
     └── theme.js - Theme styles, utilizado para customizar o tema global do Material-UI. Não foi feita nenhuma customização, mas foi mantido para efeito de documentação e melhorias futuras.
 ```
+
+# Screenshots
+
+Home|Drawer Menu|Column View|New Post|Post Details
+-----|------------|------
+<img src="https://raw.githubusercontent.com/juniorgianisini/react-readable/master/images/Image1.png" width="250px">|
+<img src="https://raw.githubusercontent.com/juniorgianisini/react-readable/master/images/Image2.png" width="250px">|
+<img src="https://raw.githubusercontent.com/juniorgianisini/react-readable/master/images/Image3.png" width="250px">|
+<img src="https://raw.githubusercontent.com/juniorgianisini/react-readable/master/images/Image4.png" width="250px">|
+<img src="https://raw.githubusercontent.com/juniorgianisini/react-readable/master/images/Image5.png" width="250px">
