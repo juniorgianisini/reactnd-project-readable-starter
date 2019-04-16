@@ -16,7 +16,8 @@ export default theme => ({
     },
 
     action_bar: {
-        marginLeft: "auto"
+        marginLeft: "auto",
+        marginRight: 10
     },
 
     category_root: {
@@ -188,10 +189,11 @@ export default theme => ({
     fab_add: {
         margin: 0,
         top: "auto",
-        right: 20,
+        right: 10,
         bottom: 20,
         left: "auto",
-        position: "fixed"
+        position: "fixed",
+        zIndex: 999
     },
 
     post_form_item: {

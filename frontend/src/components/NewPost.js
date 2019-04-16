@@ -42,7 +42,7 @@ class NewPost extends Component {
                 title: "",
                 body: "",
                 author: "",
-                category: category || ""
+                category: category || this.props.categories[0].name
             };
         }
         this.setState({ open: true, editMode, ...post });
@@ -53,7 +53,7 @@ class NewPost extends Component {
         this.setState({ open: false });
     };
 
-    handleSave = () => {
+    handleSave = (e) => {
         const { dispatch } = this.props;
         const post = createPostObject(this.state);
         if (!this.state.id) {
@@ -71,6 +71,7 @@ class NewPost extends Component {
     render() {
         const { title, body, author, category, open, editMode } = this.state;
         const { classes, categories } = this.props;
+
         return (
             <div>
                 <Dialog
@@ -90,7 +91,7 @@ class NewPost extends Component {
                                 onChange={event =>
                                     this.onChangeField("title", event)
                                 }
-                                required
+                                required                                
                                 fullWidth
                                 className={classes.post_form_item}
                                 validators={["required"]}
@@ -123,12 +124,15 @@ class NewPost extends Component {
                                 errorMessages={["Author is required"]}
                             />
 
+                            
+
                             <FormControl
                                 fullWidth
                                 required
                                 className={classes.post_form_item}
                             >
                                 <InputLabel>Category</InputLabel>
+
                                 <Select
                                     onChange={event =>
                                         this.onChangeField("category", event)
@@ -137,11 +141,12 @@ class NewPost extends Component {
                                     displayEmpty
                                     fullWidth
                                     disabled={editMode}
+                                    required
                                 >
                                     {categories.map(category => (
                                         <MenuItem
-                                            key={category.path}
-                                            value={category.path}
+                                            key={category.name}
+                                            value={category.name}
                                         >
                                             {category.name}
                                         </MenuItem>
@@ -177,8 +182,8 @@ NewPost.propTypes = {
     category: PropTypes.string
 };
 
-function mapStateToProps(state, props) {
-    return { categories: getAllCategories(state) };
+function mapStateToProps(state, {category}) {
+    return { categories: getAllCategories(state)};
 }
 
 export default connect(mapStateToProps)(withStyles(styles)(NewPost));

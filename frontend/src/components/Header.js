@@ -18,13 +18,6 @@ import {
 import { withStyles } from "@material-ui/core/styles";
 import styles from "../styles";
 import classNames from "classnames";
-import { getAllCategories } from "../selectors/categories";
-import {
-    getColumnPostOrderBy,
-    getTextSearch,
-    getColumnsView,
-    getTitle
-} from "../selectors/view";
 import AppBreadCrumbs from "./AppBreadCrumbs";
 import {
     changePostsOrderBy,
@@ -46,6 +39,8 @@ import ViewHeadlineIcon from "@material-ui/icons/ViewHeadline";
 import { withRouter } from "react-router-dom";
 import debounce from "debounce";
 import { capitalizeString } from "../utils/helper";
+import { getAllCategories } from "../selectors/categories";
+import { getColumnPostOrderBy, getTextSearch, getColumnsView, getTitle } from "../selectors/view";
 
 class Header extends Component {
     constructor(props) {

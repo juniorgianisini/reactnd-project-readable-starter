@@ -27,10 +27,10 @@ class ListPost extends Component {
     }
 
     handleAddPost = () => {
-        const { category } = this.props;
+        const { categoryId } = this.props;
 
         if (this.newPost.current) {
-            this.newPost.current.handleOpenDialog(category, undefined, false);
+            this.newPost.current.handleOpenDialog(categoryId, undefined, false);
         }
     };
 

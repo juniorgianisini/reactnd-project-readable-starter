@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import ListPosts from "./ListPosts";
 import { Redirect } from "react-router-dom";
 import { withRouter } from "react-router-dom";
-import { getCategoryById } from "../selectors/categories";
+import { getCategoryById, getAllCategories } from "../selectors/categories";
 import { changeTitle } from "../actions/view";
 import { capitalizeString } from "../utils/helper";
 
@@ -14,7 +14,7 @@ class Category extends Component {
     }
 
     render() {
-        const { categoryId, category } = this.props;
+        const { categoryId, category, categories } = this.props;
 
         if (categoryId && !category) {
             return <Redirect to="/notfound" />;

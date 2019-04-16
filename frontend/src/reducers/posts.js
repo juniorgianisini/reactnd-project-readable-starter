@@ -47,7 +47,7 @@ export default function posts(state = {}, action) {
             const post = action.post;
             return {
                 ...state,
-                [post.id]: { ...post }
+                [post.id]: { ...post, commentCount: 0 }
             };
         case CHANGE_POST:
             const postChange = action.post;
@@ -73,7 +73,8 @@ export default function posts(state = {}, action) {
                     ...state[comment.parentId],
                     comments: state[comment.parentId].comments.concat(
                         comment.id
-                    )
+                    ),
+                    commentCount: state[comment.parentId].commentCount+1
                 }
             };
         case REMOVE_COMMENT:
@@ -84,7 +85,8 @@ export default function posts(state = {}, action) {
                     ...state[commentRemove.parentId],
                     comments: state[commentRemove.parentId].comments.filter(
                         id => id !== commentRemove.id
-                    )
+                    ),
+                    commentCount: state[commentRemove.parentId].commentCount-1
                 }
             };
         default:

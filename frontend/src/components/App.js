@@ -29,8 +29,7 @@ class App extends Component {
                             <main
                                 className={classNames(classes.app_content, {
                                     [classes.app_content_shift]: openDrawer
-                                })}
-                            >
+                                })}>
                                 <Switch>
                                     <Route
                                         exact
@@ -44,6 +43,15 @@ class App extends Component {
                                         onlyTitle={false}
                                         page={<ListPosts {...this.props} />}
                                     />
+                                    
+                                    <AppRoute
+                                        exact
+                                        path="/:category/:post_id"
+                                        title="Post Details"
+                                        onlyTitle={true}
+                                        page={<PostDetails />}
+                                    />
+
                                     <AppRoute
                                         exact
                                         path="/:category"
@@ -51,12 +59,9 @@ class App extends Component {
                                         onlyTitle={false}
                                         page={<Category {...this.props} />}
                                     />
-                                    <AppRoute
-                                        exact
-                                        path="/:category/:post_id"
-                                        title="Post Details"
-                                        onlyTitle={true}
-                                        page={<PostDetails />}
+                                    <Route
+                                        path="*"
+                                        component={PageNotFound}
                                     />
                                 </Switch>
                             </main>

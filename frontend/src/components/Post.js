@@ -22,6 +22,7 @@ import AddIcon from "@material-ui/icons/Add";
 import NewPost from "./NewPost";
 import { Redirect } from "react-router-dom";
 import { changeTitle } from "../actions/view";
+import { getAllCategories } from "../selectors/categories";
 
 class Post extends Component {
     constructor(props) {
@@ -68,7 +69,7 @@ class Post extends Component {
     render() {
         const { classes, post, editMode } = this.props;
 
-        if (!post) {
+        if(!post){
             return <Redirect to="/notfound" />;
         }
 
@@ -81,8 +82,7 @@ class Post extends Component {
                         size="medium"
                         title="New Comment"
                         className={classes.fab_add}
-                        onClick={e => this.handleAddComment(e)}
-                    >
+                        onClick={e => this.handleAddComment(e)}>
                         <AddIcon fontSize="default" />
                     </Fab>
                 )}
@@ -130,7 +130,10 @@ function mapStateToProps(state, { postId, match }) {
     if (!postId) {
         postId = match.params.post_id;
     }
-    return { postId, post: getPostById(state, postId) };
+    return {
+        postId,
+        post: getPostById(state, postId)
+    };
 }
 
 export default withRouter(withStyles(styles)(connect(mapStateToProps)(Post)));
